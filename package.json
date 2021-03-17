@@ -1,0 +1,33 @@
+{
+  "name": "artgallery",
+  "version": "1.0.0",
+  "description": "display drawings",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production api/server",
+    "dev": "nodemon api/server",
+    "data:import": "node api/seeder",
+    "data:destroy": "node api/seeder -d"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^5.8.1",
+    "@sendgrid/mail": "^7.4.2",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "concurrently": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-fileupload": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.19",
+    "morgan": "^1.10.0",
+    "nanoid": "^3.1.21"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
