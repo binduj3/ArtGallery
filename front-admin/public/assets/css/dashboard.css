@@ -1,0 +1,59 @@
+html {
+  --orangeColor: #fd6a02;
+}
+
+.color-orange {
+  color: var(--orangeColor);
+}
+.bg-color-orange {
+  background-color: var(--orangeColor);
+}
+button.bg-color-orange {
+  background-color: var(--orangeColor);
+  color: white;
+}
+
+#tableUploadFiles.dataTable {
+  border-spacing: 1px;
+}
+
+#tableUploadFiles_wrapper .page-item.active .page-link {
+  background-color: var(--orangeColor) !important;
+  border-color: var(--orangeColor) !important;
+  color: #fff !important;
+}
+
+.page-link:hover {
+  color: var(--orangeColor) !important;
+}
+.page-link {
+  color: #7d7d7c !important;
+}
+#tableUploadFiles_previous .page-link {
+  color: #7d7d7c !important;
+}
+
+#tableUploadFiles_next .page-link {
+  color: var(--orangeColor) !important;
+}
+
+.dataTables_length {
+  color: #03254e !important;
+}
+
+.div.dataTables_wrapper div.dataTables_filter label {
+  color: #03254e !important;
+}
+
+.dataTables_filter .form-control {
+  border: 1px solid #7d7d7c !important;
+}
+
+#tableUploadFiles_info {
+  color: #7d7d7c !important;
+}
+
+table tbody {
+  font-weight: 400 !important;
+  color: #010d1d;
+}

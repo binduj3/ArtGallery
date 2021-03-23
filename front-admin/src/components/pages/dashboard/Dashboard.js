@@ -24,7 +24,7 @@ const Dashboard = () => {
       data: files,
       columns: [
         { data: "_id", autoWidth: true },
-        { data: "pic" },
+        { data: "storageUrl" },
         { data: "description", autoWidth: true },
         { data: null, autoWidth: false },
       ],
@@ -41,7 +41,7 @@ const Dashboard = () => {
           createdCell: (td, cellData, rowData) =>
             ReactDOM.render(
               <>
-                <img src={rowData.pic} alt='Pic' className='img-fluid' />
+                <img src={rowData.storageUrl} alt='Pic' className='img-fluid' />
               </>,
 
               td
@@ -56,8 +56,8 @@ const Dashboard = () => {
             ReactDOM.render(
               <>
                 <button
-                  className='btn btn-sm  ml-1'
-                  onClick={() => onDelete(rowData._id)}
+                  className='btn btn-sm  ml-1 bg-color-orange text-white'
+                  onClick={() => onDelete(rowData._id, rowData.storageUrl)}
                 >
                   <i className='fa fa-trash'></i> Delete
                 </button>
@@ -71,9 +71,9 @@ const Dashboard = () => {
     // eslint-disable-next-line
   }, [files]);
 
-  const onDelete = (id) => {
+  const onDelete = (id, storageUrl) => {
     if (id) {
-      deleteFile(id);
+      dispatch(deleteFile(id, { storageUrl }));
     }
   };
 
@@ -89,7 +89,7 @@ const Dashboard = () => {
             </div>
             <div className='col-md-8 col-12 d-flex'>
               <button
-                className='btn ml-auto'
+                className='btn ml-auto bg-color-orange text-white'
                 data-toggle='modal'
                 data-target='#uploadFilesModal'
               >
@@ -110,7 +110,7 @@ const Dashboard = () => {
               width='100%'
             >
               <thead>
-                <tr className='bg-color-teal color-white'>
+                <tr className='text-white bg-color-orange'>
                   <th></th>
                   <th>Pic</th>
                   <th>Description</th>

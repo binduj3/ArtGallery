@@ -17,3 +17,21 @@ export const getAllContacts = () => async (dispatch) => {
     dispatch({ type: CONTACTS, payload: [] });
   }
 };
+
+export const login = (data) => async (dispatch) => {
+  try {
+    const requestOption = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const response = await fetch("/api/v1/login", requestOption);
+    if (response.status === 200) {
+      const json = await response.json();
+      localStorage.setItem("token", json);
+    }
+  } catch (error) {
+    localStorage.setItem("token", "");
+  }
+};

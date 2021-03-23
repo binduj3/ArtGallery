@@ -1,0 +1,13 @@
+html {
+  --orangeColor: #fd6a02;
+}
+
+.color-orange {
+  color: var(--orangeColor);
+}
+.bg-color-orange {
+  background-color: var(--orangeColor);
+}
+header.bg-color-orange {
+  background-color: var(--orangeColor);
+}

@@ -3,13 +3,14 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Dashboard from "../pages/dashboard/Dashboard";
+import Login from "../layout/login";
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/dashboard' component={Dashboard} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/' component={Dashboard} />
       </Switch>
     </Router>
   );

@@ -5,6 +5,7 @@ import colors from "colors";
 import connectDB from "./db/db.js";
 import errorHandler from "./middleware/error.js";
 import fileUpload from "express-fileupload";
+import path from "path";
 
 //Route files
 import admin from "./routes/admin.js";
@@ -28,6 +29,10 @@ const PORT = process.env.PORT || 5000;
 
 //File Upload
 app.use(fileUpload());
+
+//Set Static Folder
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "public")));
 
 //Mount routers
 app.use("/api/v1/admin", admin);

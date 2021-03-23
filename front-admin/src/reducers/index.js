@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import home from "./home";
+import login from "./login";
 import dashboard from "./dashboard";
 
 export default combineReducers({
-  home,
+  login,
   dashboard,
 });

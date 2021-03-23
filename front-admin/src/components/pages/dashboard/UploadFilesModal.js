@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Datetime from "react-datetime";
+import Moment from "moment";
 
 import { upLoadFiles } from "../../../actions/dashboard";
+import { fileValidation } from "../../../utils/global";
 
 const UploadFilesModal = () => {
-  const [year, setYear] = useState();
+  const [year, setYear] = useState(new Date());
   const [description, setDescription] = useState("");
   const [files, setFiles] = useState("");
   const [errors, setErrors] = useState({});
@@ -23,16 +26,15 @@ const UploadFilesModal = () => {
     if (files.length < 0 || !files || files === "") {
       isValid = false;
       errorList.files = "Upload File";
+    } else {
+      for (let eachFile of files) {
+        if (eachFile && !fileValidation(eachFile)) {
+          isValid = false;
+          errorList.files = "Please upload file an image";
+          break;
+        }
+      }
     }
-    //  else {
-    //   for (let eachFile of file) {
-    //     if (eachFile && !fileValidation(eachFile)) {
-    //       isValid = false;
-    //       errorList.file = "Please upload file in image format";
-    //       break;
-    //     }
-    //   }
-    // }
 
     setErrors(errorList);
     return isValid;
@@ -46,7 +48,7 @@ const UploadFilesModal = () => {
         formData.append("files", eachFile);
       }
       formData.append("description", description);
-      formData.append("year", year);
+      formData.append("year", Moment(year).format("YYYY"));
 
       dispatch(upLoadFiles(formData));
 
@@ -65,14 +67,18 @@ const UploadFilesModal = () => {
 
     setFiles(file);
 
-    // for (let eachFile of file) {
-    //   if (eachFile && !fileValidation(eachFile)) {
-    //     errorList.file = "Please upload file in pdf format";
-    //     break;
-    //   }
-    // }
+    for (let eachFile of file) {
+      if (eachFile && !fileValidation(eachFile)) {
+        errorList.files = "Please upload file an image";
+        break;
+      }
+    }
 
     setErrors(errorList);
+  };
+
+  const onChangeYear = (newYear) => {
+    setYear(newYear);
   };
 
   return (
@@ -83,6 +89,7 @@ const UploadFilesModal = () => {
       aria-labelledby='uploadFilesModalLabel'
       aria-hidden='true'
     >
+      console.log("yea" + year.toString());
       <div className='modal-dialog modal-lg'>
         <div className='modal-content'>
           <div className='modal-header'>
@@ -99,12 +106,18 @@ const UploadFilesModal = () => {
             </button>
           </div>
           <div className='modal-body'>
-            <form>
+            <form encType='multipart/form-data'>
               <div className='form-group'>
                 <label htmlFor='year' className='col-form-label'>
                   Year
                 </label>
-                <input
+                <Datetime
+                  dateFormat='YYYY'
+                  timeFormat={false}
+                  value={year}
+                  onChange={onChangeYear}
+                />
+                {/* <input
                   type='date'
                   className={`form-control ${errors.year && "border-danger"}`}
                   id='add-date'
@@ -112,7 +125,7 @@ const UploadFilesModal = () => {
                   value={year}
                   name='year'
                   onChange={(e) => setYear(e.target.value)}
-                />
+                /> */}
                 <div className='text-danger'>{errors.year}</div>
               </div>
 

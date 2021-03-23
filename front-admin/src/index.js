@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 import "datatables.net-bs4/css/dataTables.bootstrap4.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import "react-datetime/css/react-datetime.css";
 
 ReactDOM.render(
   <React.StrictMode>

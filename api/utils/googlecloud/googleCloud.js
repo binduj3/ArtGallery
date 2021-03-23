@@ -12,7 +12,7 @@ export const uploadFileToCloud = async (filename) => {
   console.log("bucketname" + process.env.BUCKET_NAME);
   const res = await storage
     .bucket(process.env.BUCKET_NAME)
-    .upload("./" + filename);
+    .upload(process.env.FILE_UPLOAD_PATH + "/" + filename);
   // `mediaLink` is the URL for the raw contents of the file.
   const url = res[0].metadata.mediaLink;
 
