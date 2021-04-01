@@ -39,9 +39,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/v1/admin", admin);
 app.use("/api/v1/client", client);
 
-app.get("/", (req, res) => {
-  res.status(400).send({ success: true });
-});
+// app.get("/", (req, res) => {
+//   res.status(400).send({ success: true });
+// });
 
 // Set folder paths for production deployment
 if (process.env.NODE_ENV === "production") {
