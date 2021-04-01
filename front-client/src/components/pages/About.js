@@ -7,6 +7,7 @@ const About = () => {
         <div className='col-lg-4 col-md-4 col-sm-12'>
           <img
             src={`${process.env.PUBLIC_URL}/assets/images/Reshmika_profile.JPG`}
+            alt='profilepic'
             className='img-fluid'
           />
         </div>

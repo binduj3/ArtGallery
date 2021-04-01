@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllFiles, deleteFile } from "../../../actions/dashboard";
 import UploadFilesModal from "./UploadFilesModal";
+import EditFileModal from "./EditFileModal";
 
 var $ = require("jquery");
 $.DataTable = require("datatables.net-bs4");
 
 const Dashboard = () => {
+  const [current, setCurrent] = useState("");
+
   const dispatch = useDispatch();
   const dashboardDetails = useSelector((state) => state.dashboard);
   const { files } = dashboardDetails;
@@ -56,6 +59,14 @@ const Dashboard = () => {
             ReactDOM.render(
               <>
                 <button
+                  className='btn btn-sm bg-color-white '
+                  data-toggle='modal'
+                  data-target='#editFileModal'
+                  onClick={() => setCurrent(rowData)}
+                >
+                  <i className='fa fa-plus'></i> Edit
+                </button>
+                <button
                   className='btn btn-sm  ml-1 bg-color-orange text-white'
                   onClick={() => onDelete(rowData._id, rowData.storageUrl)}
                 >
@@ -81,6 +92,7 @@ const Dashboard = () => {
   return (
     <div className='container'>
       <UploadFilesModal />
+      {files && current && <EditFileModal current={current} />}
       <div className='row my-5'>
         <div className='col-12'>
           <div className='row'>
@@ -99,7 +111,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-
       <div className='row my-5'>
         <div className='col-12'>
           <div className='table-responsive  m-2 p-2'>

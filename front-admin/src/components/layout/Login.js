@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../actions/login";
 
-const login = () => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +28,7 @@ const login = () => {
                 id='username'
                 className='form-control'
                 value={username}
-                onChange={() => setUsername(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className='form-group'>
@@ -42,7 +42,7 @@ const login = () => {
                 id='password'
                 className='form-control'
                 value={password}
-                onChange={() => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className='form-group'>
@@ -62,4 +62,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

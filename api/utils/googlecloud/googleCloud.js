@@ -8,8 +8,10 @@ const storage = new Storage({
   keyFilename: `${__dirname}/api/utils/googlecloud/global-song-306717-2a063aae50c9.json`,
 });
 
+//bindutest4@gmail.com
 export const uploadFileToCloud = async (filename) => {
-  console.log("bucketname" + process.env.BUCKET_NAME);
+  console.log("bucketname : " + process.env.BUCKET_NAME);
+
   const res = await storage
     .bucket(process.env.BUCKET_NAME)
     .upload(process.env.FILE_UPLOAD_PATH + "/" + filename);
@@ -22,7 +24,7 @@ export const uploadFileToCloud = async (filename) => {
   // Make a request to the uploaded URL.
   //   const axios = require("axios");
   //   const pkg = await axios.get(url).then((res) => res.data);
-  console.log("Uploaded" + url);
+  console.log("Uploaded : " + url);
 };
 
 export const deleteFileFromCloud = async (fileName) => {

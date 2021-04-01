@@ -9,6 +9,7 @@ import path from "path";
 
 //Route files
 import admin from "./routes/admin.js";
+import client from "./routes/client.js";
 
 //Load env variables
 dotenv.config();
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Mount routers
 app.use("/api/v1/admin", admin);
+app.use("/api/v1/client", client);
 
 app.get("/", (req, res) => {
   res.status(400).send({ success: true });

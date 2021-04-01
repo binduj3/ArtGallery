@@ -89,7 +89,6 @@ const UploadFilesModal = () => {
       aria-labelledby='uploadFilesModalLabel'
       aria-hidden='true'
     >
-      console.log("yea" + year.toString());
       <div className='modal-dialog modal-lg'>
         <div className='modal-content'>
           <div className='modal-header'>
@@ -167,14 +166,18 @@ const UploadFilesModal = () => {
           <div className='modal-footer'>
             <button
               type='button'
-              className='btn'
+              className='btn bg-color-orange'
               data-dismiss='modal'
               id='close-uploadFiles'
               onClick={() => onClose()}
             >
               Close
             </button>
-            <button type='submit' className='btn ' onClick={onSaveClick}>
+            <button
+              type='submit'
+              className='btn  bg-color-white'
+              onClick={onSaveClick}
+            >
               Save
             </button>
           </div>

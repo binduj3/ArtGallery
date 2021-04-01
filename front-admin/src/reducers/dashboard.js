@@ -1,4 +1,9 @@
-import { FILES, UPLOAD_FILES, DELETE_FILE } from "../actions/types";
+import {
+  FILES,
+  UPLOAD_FILES,
+  DELETE_FILE,
+  UPDATE_FILE,
+} from "../actions/types";
 
 const initialState = {
   contacts: [],
@@ -16,12 +21,19 @@ export default function (state = initialState, action) {
     case UPLOAD_FILES:
       return {
         ...state,
-        files: [...state.files, payload],
+        files: [...state.files, ...payload],
       };
     case DELETE_FILE:
       return {
         ...state,
         files: state.files.filter((file) => file._id !== payload),
+      };
+    case UPDATE_FILE:
+      return {
+        ...state,
+        files: state.files.map((file) =>
+          file._id === payload.id ? payload : file
+        ),
       };
     default:
       return state;

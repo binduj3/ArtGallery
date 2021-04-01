@@ -13,6 +13,12 @@ button.bg-color-orange {
   color: white;
 }
 
+button.bg-color-white {
+  background-color: white;
+  color: var(--orangeColor);
+  border: 1px solid var(--orangeColor);
+}
+
 #tableUploadFiles.dataTable {
   border-spacing: 1px;
 }

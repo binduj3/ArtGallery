@@ -1,8 +1,10 @@
-import { CONTACTS } from "../actions/types";
+import { CONTACTS, DOCUMENTS } from "../actions/types";
 
 const initialState = {
   contacts: [],
+  documents: [],
 };
+
 export default function (state = initialState, action) {
   const { type, payload } = action;
 
@@ -11,6 +13,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         contacts: payload,
+      };
+
+    case DOCUMENTS:
+      return {
+        ...state,
+        documents: payload,
       };
 
     default:
