@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=production api/server",
+    "start": "NODE_ENV=production node api/server",
     "dev": "nodemon api/server",
     "data:import": "node api/seeder",
     "data:destroy": "node api/seeder -d"

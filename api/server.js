@@ -43,6 +43,26 @@ app.get("/", (req, res) => {
   res.status(400).send({ success: true });
 });
 
+// Set folder paths for production deployment
+if (process.env.NODE_ENV === "production") {
+  // Admin App
+  if (process.env.APP === "admin") {
+    app.use(express.static(path.join(__dirname, "./front-admin/build")));
+    app.get("*", (req, res) =>
+      res.sendFile(
+        path.resolve(__dirname, "front-admin", "build", "index.html")
+      )
+    );
+  } else if (process.env.APP === "client") {
+    app.use(express.static(path.join(__dirname, "./front-client/build")));
+    app.get("*", (req, res) =>
+      res.sendFile(
+        path.resolve(__dirname, "front-client", "build", "index.html")
+      )
+    );
+  }
+}
+
 //error handling middleware
 app.use(errorHandler);
 
