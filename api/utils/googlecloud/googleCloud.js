@@ -8,7 +8,6 @@ const storage = new Storage({
   keyFilename: `${__dirname}/api/utils/googlecloud/global-song-306717-2a063aae50c9.json`,
 });
 
-//bindutest4@gmail.com
 export const uploadFileToCloud = async (filename) => {
   console.log("bucketname : " + process.env.BUCKET_NAME);
 
