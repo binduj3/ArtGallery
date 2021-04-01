@@ -33,7 +33,7 @@ const Home = () => {
                 return (
                   document.documents &&
                   document.documents.length > 0 && (
-                    <div className='col' key={index}>
+                    <div className='col' key={index} className='mt-5 p-2'>
                       <div className='card'>
                         <img
                           src={document.documents[0].storageUrl}
