@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-//bindutest9@gmail.com for mongodb
+
 const connectDB = async () => {
   const conn = await mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
