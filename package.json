@@ -7,6 +7,8 @@
   "scripts": {
     "start": "NODE_ENV=production node api/server",
     "dev": "nodemon api/server",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-admin && npm run build --prefix front-admin",
+    "-heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-client && npm run build --prefix front-client",
     "data:import": "node api/seeder",
     "data:destroy": "node api/seeder -d"
   },
