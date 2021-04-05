@@ -7,6 +7,7 @@ import errorHandler from "./middleware/error.js";
 import fileUpload from "express-fileupload";
 import path from "path";
 import cors from "cors";
+import forceSecure from "force-secure-express";
 
 //Route files
 import admin from "./routes/admin.js";
