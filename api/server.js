@@ -6,6 +6,7 @@ import connectDB from "./db/db.js";
 import errorHandler from "./middleware/error.js";
 import fileUpload from "express-fileupload";
 import path from "path";
+import cors from "cors";
 
 //Route files
 import admin from "./routes/admin.js";
@@ -21,6 +22,7 @@ const app = express();
 
 //Body parser
 app.use(express.json());
+app.use(cors());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === "development") {
