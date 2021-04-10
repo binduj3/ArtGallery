@@ -12,6 +12,7 @@ import forceSecure from "force-secure-express";
 //Route files
 import admin from "./routes/admin.js";
 import client from "./routes/client.js";
+import users from "./routes/users.js";
 
 //Load env variables
 dotenv.config();
@@ -40,9 +41,12 @@ app.use(fileUpload());
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "public")));
 
+console.log("dirname" + __dirname);
+
 //Mount routers
 app.use("/api/v1/admin", admin);
 app.use("/api/v1/client", client);
+app.use("/api/v1/users", users);
 
 // app.get("/", (req, res) => {
 //   res.status(400).send({ success: true });
