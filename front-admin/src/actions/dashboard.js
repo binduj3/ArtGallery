@@ -3,8 +3,10 @@ import { Message } from "../utils/global";
 
 export const getAllFiles = () => async (dispatch) => {
   try {
+    // if (localStorage.getItem("token")) {
     const requestOption = {
       method: "GET",
+      headers: { "x-auth-token": localStorage.getItem("token") },
     };
 
     const response = await fetch("/api/v1/admin", requestOption);
@@ -12,7 +14,10 @@ export const getAllFiles = () => async (dispatch) => {
       const json = await response.json();
 
       dispatch({ type: FILES, payload: json.data });
+    } else {
+      Message("error", "OOops...", "Something went wrong !", false, 2000);
     }
+    // }
   } catch (error) {
     dispatch({ type: FILES, payload: [] });
   }
@@ -20,6 +25,7 @@ export const getAllFiles = () => async (dispatch) => {
 
 export const upLoadFiles = (data) => async (dispatch) => {
   try {
+    // if (localStorage.getItem("token")) {
     const requestOption = {
       method: "POST",
       body: data,
@@ -29,7 +35,10 @@ export const upLoadFiles = (data) => async (dispatch) => {
       const json = await response.json();
       Message("success", "Successfully added file", "", false, 2500);
       dispatch({ type: UPLOAD_FILES, payload: json.data });
+    } else {
+      Message("error", "OOops...", "Something went wrong !", false, 2000);
     }
+    // }
   } catch (error) {
     console.log(error);
   }
@@ -37,6 +46,7 @@ export const upLoadFiles = (data) => async (dispatch) => {
 
 export const deleteFile = (id, data) => async (dispatch) => {
   try {
+    // if (localStorage.getItem("token")) {
     const requestOption = {
       method: "DELETE",
       body: JSON.stringify(data),
@@ -49,6 +59,7 @@ export const deleteFile = (id, data) => async (dispatch) => {
     } else {
       Message("error", "OOops...", "Something went wrong !", false, 2000);
     }
+    // }
   } catch (error) {
     console.log(error);
   }
@@ -56,6 +67,7 @@ export const deleteFile = (id, data) => async (dispatch) => {
 
 export const updateFile = (id, data, saveData) => async (dispatch) => {
   try {
+    // if (localStorage.getItem("token")) {
     const requestOption = {
       method: "PUT",
       body: JSON.stringify(data),
@@ -69,6 +81,7 @@ export const updateFile = (id, data, saveData) => async (dispatch) => {
     } else {
       Message("error", "OOops...", "Something went wrong !", false, 2000);
     }
+    //  }
   } catch (error) {
     console.log(error);
   }

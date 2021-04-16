@@ -1,11 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 
 import Routes from "./components/routing/Routes";
+import { checkUserExists } from "./actions/login";
 
 const App = () => {
+  // useEffect(() => {
+  //   store.dispatch(checkUserExists());
+  // }, []);
+
   return (
     <Provider store={store}>
       <Router>

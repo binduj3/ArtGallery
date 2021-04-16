@@ -13,6 +13,7 @@ import forceSecure from "force-secure-express";
 import admin from "./routes/admin.js";
 import client from "./routes/client.js";
 import users from "./routes/users.js";
+import auth from "./routes/auth.js";
 
 //Load env variables
 dotenv.config();
@@ -47,6 +48,7 @@ console.log("dirname" + __dirname);
 app.use("/api/v1/admin", admin);
 app.use("/api/v1/client", client);
 app.use("/api/v1/users", users);
+app.use("/api/v1/auth", auth);
 
 // app.get("/", (req, res) => {
 //   res.status(400).send({ success: true });
