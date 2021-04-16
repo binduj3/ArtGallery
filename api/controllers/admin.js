@@ -5,6 +5,7 @@ import ErrorResponse from "../utils/errorResponse.js";
 import asyncHandler from "express-async-handler";
 
 import fs from "fs";
+import path from "path";
 
 import {
   deleteFileFromCloud,
@@ -43,6 +44,12 @@ export const uploadFiles = asyncHandler(async (req, res, next) => {
     if (!file.mimetype.startsWith("image")) {
       return next(new ErrorResponse(`Please upload an image file`), 400);
     }
+  }
+  const __dirname = path.resolve();
+  const dir = __dirname + process.env.FILE_PATH;
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
   }
 
   //TODO: check for duplicate documents
@@ -144,11 +151,4 @@ export const updateFile = asyncHandler(async (req, res, next) => {
   );
 
   res.status(200).json({ success: true, data: document });
-});
-
-//@desc Login
-//@route POST /api/v1/admin/login
-//@access Private
-export const login = asyncHandler(async (req, res, next) => {
-  res.status(200).json({ success: true });
 });
