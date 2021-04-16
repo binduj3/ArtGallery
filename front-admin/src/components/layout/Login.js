@@ -11,12 +11,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const loginDetails = useSelector((state) => state.login);
 
-  // useEffect(() => {
-  //   if (loginDetails.isAuthenticated) {
-  //     <Redirect to='/dashboard' />;
-  //   }
-  // }, [loginDetails.isAuthenticated]);
-
   const onClick = () => {
     dispatch(login({ email: username, password }));
   };
